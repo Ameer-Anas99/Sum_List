@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sum_value/home.dart';
+import 'package:provider/provider.dart';
+import 'package:sum_value/controller/provider.dart';
+import 'package:sum_value/view/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,6 +12,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: HomeScreen());
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => TextProvider(),
+          )
+        ],
+        child:
+            MaterialApp(debugShowCheckedModeBanner: false, home: HomeScreen()));
   }
 }
